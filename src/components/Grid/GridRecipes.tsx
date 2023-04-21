@@ -1,5 +1,6 @@
-import { Recipe } from "types";
+import { Recipe } from "src/types";
 import { GridRecipesStyled } from "./Styled";
+import { Link } from "react-router-dom";
 
 interface GridRecipesProps {
   elements: Recipe[];
@@ -13,10 +14,14 @@ const GridRecipes = ({ elements, title }: GridRecipesProps) => {
 
       <section className="allElements">
         {elements.map((element) => (
-          <article key={element.id} className="element">
+          <Link
+            to={`./recipes/${element.id}`}
+            key={element.id}
+            className="element"
+          >
             <img src={element.image} alt={element.title} />
-            {element.title}
-          </article>
+            <p>{element.title}</p>
+          </Link>
         ))}
       </section>
     </GridRecipesStyled>

@@ -6,6 +6,8 @@ import { ThemeProvider } from "styled-components";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import React from "react";
+import { RecoilRoot } from "recoil";
+import SingleRecipe from "./Pages/Recipe/SingleRecipe";
 
 const router = createBrowserRouter([
   {
@@ -13,15 +15,15 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/recipes",
-    element: <Home />,
-  },
-  {
     path: "/recipes/:id",
-    element: <Home />,
+    element: <SingleRecipe />,
   },
   {
     path: "/about",
+    element: <Home />,
+  },
+  {
+    path: "*",
     element: <Home />,
   },
 ]);
@@ -30,8 +32,10 @@ const root = document.getElementById("root") as HTMLElement;
 
 ReactDOM.createRoot(root).render(
   <React.StrictMode>
-    <ThemeProvider theme={lightTheme}>
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    <RecoilRoot>
+      <ThemeProvider theme={lightTheme}>
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </RecoilRoot>
   </React.StrictMode>
 );

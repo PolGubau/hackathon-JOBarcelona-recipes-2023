@@ -24,13 +24,24 @@ export const GridRecipesStyled = styled.section`
     align-items: center;
     justify-content: center;
     border: 1px solid ${({ theme }) => theme.colors.primary};
-    padding: 10px;
+    padding: 20px;
+    transition: all 0.1s ease-in-out;
     border-radius: 20px;
+    :hover {
+      border: 1px solid ${({ theme }) => theme.colors.neutral};
+      background-color: ${({ theme }) => theme.colors.secondary};
+      transform: scale(0.98);
+    }
+
     img {
       border-radius: 10px;
       width: 100%;
       height: 200px;
       object-fit: cover;
+    }
+    p {
+      margin: 10px 0;
+      text-align: center;
     }
   }
 `;

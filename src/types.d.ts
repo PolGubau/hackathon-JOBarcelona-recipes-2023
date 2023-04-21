@@ -76,4 +76,3 @@ export interface Recipe {
   originalId: null;
   spoonacularSourceUrl: string;
 }
-

@@ -9,6 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "axios": "^1.3.6",
+    "framer-motion": "^10.12.4",
+    "pol-ui": "^0.0.57",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
