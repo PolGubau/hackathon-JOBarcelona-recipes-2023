@@ -10,7 +10,6 @@ export const NavStyled = styled.nav`
   gap: 20px;
   padding: 10px 20px;
   background-color: ${({ theme }) => theme.colors.neutral};
-  /* border-bottom: 3px solid ${({ theme }) => theme.colors.mid}; */
 
   a {
     display: flex;
