@@ -20,6 +20,9 @@ import IngredientList from "./components/Ingredients/List/List";
 import Instructions from "./components/Instructions/Instructions";
 import Image from "./components/Image/Image";
 import { autoCapitalize } from "src/utils/autoCapitalize";
+import StarHandIcon from "src/assets/HandIcons/StarHandIcon";
+import isEqual from "lodash/isEqual";
+import { getInfoFromID } from "src/thunks/getInfoFromID";
 
 //
 
@@ -30,14 +33,12 @@ function SingleRecipe() {
 
   const [SearchedRecipes, setSearchedRecipes] =
     useRecoilState(SearchedRecipesState);
-
   SearchedRecipes.length === 0 && setSearchedRecipes(recipes);
-  const [openedRecipe, setOpenedRecipe] = useState<Recipe | null>(null);
-
   const searchRecipeInAlreadySearched = (id: string | undefined) => {
     !id && <Navigate replace to="/" />;
     const uuid = Number(id);
     const recipe = SearchedRecipes.find((recipe: Recipe) => recipe.id === uuid);
+
     if (recipe) {
       setOpenedRecipe(recipe);
       return recipe;
@@ -46,14 +47,19 @@ function SingleRecipe() {
     }
   };
 
+  const [openedRecipe, setOpenedRecipe] = useState<Recipe | null>(null);
+
+  const getInfo = async (id: string) => {
+    const data = getInfoFromID(id);
+    const response = await data;
+    setOpenedRecipe(response);
+  };
+
   useEffect(() => {
-    !searchRecipeInAlreadySearched(id)
-      ? axios
-          .get(`https://api.spoonacular.com/recipes/${id}/information`)
-          .then((response) => {
-            setOpenedRecipe(response.data);
-          })
-      : null;
+    const wasSearched = searchRecipeInAlreadySearched(id);
+
+    !wasSearched && !openedRecipe && id && getInfo(id);
+    console.log(openedRecipe);
   }, [id]);
 
   const {
@@ -158,7 +164,14 @@ function SingleRecipe() {
           </div>
           {summary && (
             <>
-              <h2>Summary</h2>
+              <h2>
+                <StarHandIcon
+                  style={{
+                    transform: "scale(0.6)",
+                  }}
+                />
+                Summary
+              </h2>
               <div dangerouslySetInnerHTML={{ __html: summary }} />
             </>
           )}
@@ -193,7 +206,7 @@ function SingleRecipe() {
             <p className="center">Source: {sourceName}</p>
           </div>
         </div>
-          <IngredientList ingredients={openedRecipe.extendedIngredients} />
+        <IngredientList ingredients={openedRecipe.extendedIngredients} />
         <Instructions simple={instructions} complex={analyzedInstructions} />
         {/* <pre style={{ whiteSpace: "pre-wrap" }}>
           {JSON.stringify(openedRecipe, null, 2)}

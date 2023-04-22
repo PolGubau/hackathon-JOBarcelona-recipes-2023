@@ -1,39 +1,45 @@
 import { getRandomPlaceholder } from "src/utils/inputPlaceholder";
 import { SearchFieldStyled } from "./Styled";
 import { TbSearch } from "react-icons/tb";
-import { SearchState } from "src/State/Atom";
+import { SearchedRecipesState } from "src/State/Atom";
 import { useRecoilState } from "recoil";
-import { useDebounce } from "pol-ui";
-import { useEffect, useMemo, useState } from "react";
+import { useLocalStorage } from "pol-ui";
+import { useMemo, useRef } from "react";
+import { searchRecipes } from "src/thunks/searchRecipes";
 
 const SearchField = () => {
-  const [searchState, setSearchState] = useRecoilState(SearchState);
-  const [value, setValue] = useState("");
+  const inputRef = useRef(null);
+  const [recipes, setRecipes] = useLocalStorage("recipes", []);
+
+  const [SearchedRecipes, setSearchedRecipes] =
+    useRecoilState(SearchedRecipesState);
+
+  SearchedRecipes.length === 0 && setSearchedRecipes(recipes);
+
+  const getRecipes = async (query: string) => {
+    const response = searchRecipes(query);
+    const data = await response;
+    console.log(data);
+    setRecipes(data);
+    setSearchedRecipes(data);
+    console.log(data);
+  };
+
   const placeHolder = useMemo(() => getRandomPlaceholder(), []);
-  const debouncedValue = useDebounce(value, 500);
 
-  useEffect(() => {
-    setSearchState({
-      ...searchState,
-      value: debouncedValue || "",
-    });
-  }, [debouncedValue]);
-
-  const handleSearch = (e: any) => {
-    const newValue = e.target.value;
-    setValue(newValue);
+  const handleSearchDirect = (e: any) => {
+    e.preventDefault();
+    const current: any = inputRef?.current;
+    const newValue: string = current.value;
+    getRecipes(newValue);
   };
 
   return (
-    <SearchFieldStyled>
-      <TbSearch size={30} className="icon" />
-      <input
-        type="text"
-        placeholder={placeHolder}
-        autoFocus
-        value={value}
-        onChange={handleSearch}
-      />
+    <SearchFieldStyled onSubmit={handleSearchDirect}>
+      <input ref={inputRef} type="text" placeholder={placeHolder} autoFocus />
+      <button type="submit">
+        <TbSearch size={30} className="icon" />
+      </button>
     </SearchFieldStyled>
   );
 };

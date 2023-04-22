@@ -13,7 +13,7 @@ export const InstructionsStyled = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
     width: fit-content;
     padding: 5px;
     border-radius: 30px;

@@ -8,6 +8,7 @@ export const SingleStyled = styled.main`
   gap: 20px;
   max-width: ${({ theme }) => theme.width.max};
   width: 100%;
+  margin-bottom: 200px;
 `;
 
 const SimpleInstructions = ({ instructions }: { instructions: string }) => {

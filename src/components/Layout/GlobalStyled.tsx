@@ -27,4 +27,8 @@ export const LayoutStyled = styled.div`
   .bgAccent {
     background-color: ${({ theme }) => theme.colors.accent};
   }
+
+  .importedIcon {
+    fill: ${({ theme }) => theme.colors.primary};
+  }
 `;

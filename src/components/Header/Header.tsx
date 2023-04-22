@@ -2,6 +2,7 @@ import { TbHexagons } from "react-icons/tb";
 import SearchField from "../SearchField/SearchField";
 import { HeaderStyled } from "./Styled";
 import Sentence from "./Sentence/Sentence";
+import UndrawHandIcon from "src/assets/HandIcons/UndrawHandIcon";
 
 const Header = () => {
   return (
@@ -17,6 +18,7 @@ const Header = () => {
         <SearchField />
         <Sentence />
       </div>
+      <UndrawHandIcon />
     </HeaderStyled>
   );
 };

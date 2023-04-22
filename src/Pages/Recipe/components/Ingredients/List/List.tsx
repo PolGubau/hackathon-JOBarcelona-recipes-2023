@@ -1,6 +1,7 @@
 import { ExtendedIngredients } from "src/types";
 import Ingredient from "../Ingredient";
 import styled from "styled-components";
+import NotesHandIcon from "src/assets/HandIcons/NotesHandIcon";
 
 interface IngredientListProps {
   ingredients: ExtendedIngredients[];
@@ -26,7 +27,14 @@ export const IngredientListStyled = styled.ul`
 const IngredientList = ({ ingredients }: IngredientListProps) => {
   return (
     <SectionStyled>
-      <h2 className="center bigText">Ingredients</h2>
+      <h2 className="center bigText">
+        <NotesHandIcon
+          style={{
+            transform: "scale(0.6)",
+          }}
+        />
+        Ingredients
+      </h2>
 
       <IngredientListStyled>
         {ingredients.map((ingredient: ExtendedIngredients) => (

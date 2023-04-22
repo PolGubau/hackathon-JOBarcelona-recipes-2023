@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SearchFieldStyled = styled.div`
+export const SearchFieldStyled = styled.form`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,7 +12,7 @@ export const SearchFieldStyled = styled.div`
   background-color: ${({ theme }) => theme.colors.neutral};
   height: 50px;
   border-radius: 9999px;
-  padding: 30px 30px 30px 30px;
+  padding: 30px 5px 30px 30px;
   outline: 1px solid black;
   max-width: 600px;
 
@@ -24,5 +24,22 @@ export const SearchFieldStyled = styled.div`
     background-color: ${({ theme }) => theme.colors.neutral};
     border: none;
     outline-style: none;
+  }
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: ${({ theme }) => theme.colors.neutral};
+    border: none;
+    outline-style: none;
+    cursor: pointer;
+    padding: 0px;
+    margin: 0px;
+    border-radius: 9999px;
+    padding: 10px;
+    :hover {
+      filter: brightness(0.8);
+    }
   }
 `;

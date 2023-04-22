@@ -11,7 +11,7 @@ export interface ExtendedIngredients {
   unit: string;
   meta: string[];
   measures: {
-    us: { amount: number; unitShort: string; unitLong: string };
+    us: { amount?: number; unitShort?: string; unitLong?: string };
     metric: {
       amount: number;
       unitShort: string;

@@ -1,6 +1,7 @@
 import { TbArrowNarrowLeft, TbHexagons, TbUser } from "react-icons/tb";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import UserHandIcon from "src/assets/HandIcons/UserHandIcon";
 export const NavStyled = styled.nav`
   display: flex;
   flex-direction: row;
@@ -50,7 +51,7 @@ const Nav = () => {
       </Link>
 
       <Link to={"/about"}>
-        <TbUser />
+        <UserHandIcon style={{ transform: "scale(0.5)" }} />
         About
       </Link>
     </NavStyled>
