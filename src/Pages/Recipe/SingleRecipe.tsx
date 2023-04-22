@@ -208,9 +208,6 @@ function SingleRecipe() {
         </div>
         <IngredientList ingredients={openedRecipe.extendedIngredients} />
         <Instructions simple={instructions} complex={analyzedInstructions} />
-        {/* <pre style={{ whiteSpace: "pre-wrap" }}>
-          {JSON.stringify(openedRecipe, null, 2)}
-        </pre> */}
       </SingleStyled>
     </Layout>
   );

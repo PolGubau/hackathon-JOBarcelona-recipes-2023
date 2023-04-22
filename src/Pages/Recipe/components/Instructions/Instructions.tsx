@@ -22,15 +22,17 @@ const Instructions = ({ simple, complex }: InstructionsProps) => {
         />
         Instructions
       </h2>
+      {simple && complex && (
+        <div className={`buttons `}>
+          <ButtonSelect selected={short} onClick={() => setShort(true)}>
+            Simple
+          </ButtonSelect>
+          <ButtonSelect selected={!short} onClick={() => setShort(false)}>
+            Complex
+          </ButtonSelect>
+        </div>
+      )}
 
-      <div className={`buttons `}>
-        <ButtonSelect selected={short} onClick={() => setShort(true)}>
-          Simple
-        </ButtonSelect>
-        <ButtonSelect selected={!short} onClick={() => setShort(false)}>
-          Complex
-        </ButtonSelect>
-      </div>
       {short && simple && <SimpleInstructions instructions={simple} />}
       {!short && complex && <ComplexInstructions instructions={complex} />}
     </InstructionsStyled>

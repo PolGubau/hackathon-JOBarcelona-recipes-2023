@@ -19,10 +19,8 @@ const SearchField = () => {
   const getRecipes = async (query: string) => {
     const response = searchRecipes(query);
     const data = await response;
-    console.log(data);
     setRecipes(data);
     setSearchedRecipes(data);
-    console.log(data);
   };
 
   const placeHolder = useMemo(() => getRandomPlaceholder(), []);
