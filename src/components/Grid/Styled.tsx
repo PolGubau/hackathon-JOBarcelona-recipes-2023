@@ -16,21 +16,18 @@ export const GridRecipesStyled = styled.section`
     justify-content: center;
   }
   .element {
-    background-color: ${({ theme }) => theme.colors.primary};
     overflow: hidden;
-    color: ${({ theme }) => theme.colors.neutral};
+    color: ${({ theme }) => theme.colors.primary};
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    border: 1px solid ${({ theme }) => theme.colors.primary};
+    justify-content: flex-start;
     padding: 20px;
     transition: all 0.1s ease-in-out;
     border-radius: 20px;
     :hover {
-      border: 1px solid ${({ theme }) => theme.colors.neutral};
-      background-color: ${({ theme }) => theme.colors.secondary};
       transform: scale(0.98);
+      filter: brightness(0.9);
     }
 
     img {

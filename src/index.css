@@ -24,6 +24,12 @@ h1 {
   line-height: 1.1;
   font-weight: 900;
   margin: 0;
+  text-align: center;
+}
+
+h2 {
+  margin: 0;
+  text-align: center;
 }
 
 p {
@@ -31,7 +37,7 @@ p {
 }
 
 a {
-  color: #fff;
+  color: inherit;
   text-decoration: none;
 }
 
@@ -48,4 +54,36 @@ a {
 
 .marginTop {
   margin-top: 30px;
+}
+
+.bigText {
+  font-size: 1.6em;
+  text-align: center;
+
+}
+
+.center {
+  text-align: center;
+}
+
+.rotable {
+  transform: rotate(0deg);
+  transition: transform 0.5s;
+}
+
+.rotate {
+  transform: rotate(180deg);
+  transition: transform 0.5s;
+}
+
+@media screen and (max-width: 768px) {
+  .flex {
+    flex-direction: column;
+  }
+
+  .bigText {
+    font-size: 1.3em;
+
+  }
+
 }

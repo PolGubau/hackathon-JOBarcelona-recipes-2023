@@ -12,15 +12,15 @@ export const SearchFieldStyled = styled.div`
   background-color: ${({ theme }) => theme.colors.neutral};
   height: 50px;
   border-radius: 9999px;
-  padding: 1rem 1rem 1rem 1.2rem;
-  border: 1px solid black;
+  padding: 30px 30px 30px 30px;
+  outline: 1px solid black;
   max-width: 600px;
 
   input {
     display: flex;
     font-size: 1.4em;
     flex: 1;
-    height: 50px;
+    height: 60px;
     background-color: ${({ theme }) => theme.colors.neutral};
     border: none;
     outline-style: none;
