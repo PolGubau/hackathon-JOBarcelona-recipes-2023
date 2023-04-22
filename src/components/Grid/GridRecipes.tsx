@@ -1,14 +1,34 @@
-import { Recipe } from "src/types";
+/**
+
+@typedef {Object} Recipe - Represents a recipe
+@property {number} id - The id of the recipe
+@property {string} title - The title of the recipe
+@property {string} image - The image url of the recipe
+@property {string} [summary] - The summary of the recipe
+@property {string[]} [ingredients] - The list of ingredients of the recipe
+@property {string[]} [instructions] - The list of instructions of the recipe
+*/
 import { GridRecipesStyled } from "./Styled";
 import { Link } from "react-router-dom";
 import { CupCakeHandIcon } from "src/assets/HandIcons";
 import { motion } from "framer-motion";
-interface GridRecipesProps {
+import { Recipe } from "src/types";
+
+/**
+
+Grid of recipe components
+@param {Object} GridRecipesProps - The props object
+@param {Recipe[]} GridRecipesProps.elements - The array of recipes to display
+@param {string} [GridRecipesProps.title] - The title of the grid (optional)
+@returns {JSX.Element} The GridRecipes component
+*/
+const GridRecipes = ({
+  elements,
+  title,
+}: {
   elements: Recipe[];
   title?: string;
-}
-
-const GridRecipes = ({ elements, title }: GridRecipesProps) => {
+}) => {
   const container = {
     hidden: { opacity: 1, scale: 0 },
     visible: {
@@ -20,7 +40,6 @@ const GridRecipes = ({ elements, title }: GridRecipesProps) => {
       },
     },
   };
-
   const item = {
     hidden: { y: 20, opacity: 0 },
     visible: {
@@ -40,7 +59,7 @@ const GridRecipes = ({ elements, title }: GridRecipesProps) => {
           {title}
         </h2>
       )}
-
+      php Copy code
       <motion.ul
         className="allElements"
         variants={container}

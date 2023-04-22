@@ -1,4 +1,3 @@
-import { getRandomPlaceholder } from "src/utils/inputPlaceholder";
 import { SearchFieldStyled } from "./Styled";
 import { TbSearch } from "react-icons/tb";
 import { HomeSubTitle, SearchedRecipesState } from "src/State/Atom";
@@ -7,7 +6,7 @@ import { useMemo, useRef } from "react";
 import { searchRecipes } from "src/thunks/searchRecipes";
 import useLocalStorage from "src/hooks/useLocalStorage";
 import { getRandomElementFromArray } from "src/utils/getRandomElementFromArray";
-import { subtitles } from "src/models/texts";
+import { inputPlaceholder, subtitles } from "src/models/texts";
 import exampleData from "src/models/exampleData";
 
 const SearchField = () => {
@@ -26,7 +25,10 @@ const SearchField = () => {
     setSearchedRecipes(data);
   };
 
-  const placeHolder = useMemo(() => getRandomPlaceholder(), []);
+  const placeHolder = useMemo(
+    () => getRandomElementFromArray(inputPlaceholder),
+    []
+  );
   const setSubTitle = useSetRecoilState<string>(HomeSubTitle);
 
   const handleSearchDirect = (e: { preventDefault: () => void }) => {
