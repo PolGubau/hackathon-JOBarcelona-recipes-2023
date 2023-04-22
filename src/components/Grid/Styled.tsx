@@ -27,6 +27,9 @@ export const GridRecipesStyled = styled.section`
     padding: 20px;
     transition: all 0.1s ease-in-out;
     border-radius: 20px;
+    .elementli {
+      list-style: none;
+    }
     :hover {
       transform: scale(0.98);
       filter: brightness(0.9);

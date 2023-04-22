@@ -118,3 +118,19 @@ export const searchMessages = (newValue: string) => {
     `Our exciting ${newValue} options!`,
   ];
 };
+
+export const randomMessage: string[] = [
+  "Ready for a delicious surprise?",
+  "Feeling adventurous? Try this recipe!",
+  "Don't know what to cook? We've got you covered!",
+  "Discover something new with this random recipe!",
+  "Are you brave enough to try this random recipe?",
+  "In the mood for something unexpected? Try this!",
+  "Get ready to take your taste buds on a journey!",
+  "Let fate decide what's for dinner with a random recipe!",
+  "This recipe might just become your new favorite!",
+  "This random recipe is sure to become a family favorite!",
+  "No need to search any further for a random recipe!",
+  "Embrace the unexpected and try this random recipe!",
+  "Are you ready for a random recipe adventure?",
+];
