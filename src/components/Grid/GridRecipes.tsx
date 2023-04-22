@@ -59,7 +59,6 @@ const GridRecipes = ({
           {title}
         </h2>
       )}
-      php Copy code
       <motion.ul
         className="allElements"
         variants={container}
