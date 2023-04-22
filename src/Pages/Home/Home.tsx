@@ -7,8 +7,8 @@ import { SearchedRecipesState } from "src/State/Atom";
 import { useRecoilState } from "recoil";
 import { useEffect } from "react";
 import { createUrl, url } from "src/models/url";
-import axios from "axios";
 import { useLocalStorage } from "pol-ui";
+import { getRandomRecipes } from "src/thunks/getRandomrecipes";
 
 function Home() {
   const [recipes, setRecipes] = useLocalStorage("recipes", []);
@@ -18,18 +18,21 @@ function Home() {
 
   SearchedRecipes.length === 0 && setSearchedRecipes(recipes);
 
-  const uri = createUrl(url.RANDOM);
+  const getRecipes = async () => {
+    !SearchedRecipes && setSearchedRecipes(recipes);
 
-  const getRecipes = (uri: string) => {
-    // axios.get(uri).then((response: any) => {
-    //   setSearchedRecipes(response.data);
-    // });
-    setSearchedRecipes(exampleData.recipes as any);
-    setRecipes(exampleData.recipes as any);
+    if (!SearchedRecipes) {
+      const response = getRandomRecipes();
+      const data = await response;
+      console.log(data);
+
+      data && setRecipes(data);
+      data && setSearchedRecipes(data);
+    }
   };
 
   useEffect(() => {
-    getRecipes(uri);
+    getRecipes();
   }, []);
 
   return (

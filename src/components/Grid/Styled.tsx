@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const GridRecipesStyled = styled.section`
+  width: 100%;
+  max-width: ${({ theme }) => theme.width.max};
   .allElements {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
