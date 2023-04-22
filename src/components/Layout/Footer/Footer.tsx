@@ -1,4 +1,4 @@
-import { TbArrowNarrowLeft, TbHexagons, TbUser } from "react-icons/tb";
+import {  TbHexagons, TbUser } from "react-icons/tb";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 export const FooterStyled = styled.nav`

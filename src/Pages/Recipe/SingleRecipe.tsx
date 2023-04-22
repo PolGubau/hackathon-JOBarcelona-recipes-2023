@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import { SingleStyled } from "./SingleStyled";
-import { ExtendedIngredients, Recipe } from "src/types";
+import { Recipe } from "src/types";
 import { SearchedRecipesState } from "src/State/Atom";
 import { useRecoilState } from "recoil";
 import { Navigate } from "react-router-dom";
@@ -26,7 +26,7 @@ import useLocalStorage from "src/hooks/useLocalStorage";
 
 function SingleRecipe() {
   const { id } = useParams();
-  const [recipes, setRecipes] = useLocalStorage("recipes", []);
+  const [recipes] = useLocalStorage("recipes", []);
 
   const [SearchedRecipes, setSearchedRecipes] =
     useRecoilState(SearchedRecipesState);

@@ -1,5 +1,3 @@
-import { Recipe } from "src/types";
-
 const exampleData = [
   {
     vegetarian: true,

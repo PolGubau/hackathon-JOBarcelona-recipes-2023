@@ -7,7 +7,7 @@ import { useMemo, useRef } from "react";
 import { searchRecipes } from "src/thunks/searchRecipes";
 import useLocalStorage from "src/hooks/useLocalStorage";
 import { getRandomElementFromArray } from "src/utils/getRandomElementFromArray";
-import { searchMessages, subtitles } from "src/models/texts";
+import { subtitles } from "src/models/texts";
 import exampleData from "src/models/exampleData";
 
 const SearchField = () => {
@@ -15,7 +15,7 @@ const SearchField = () => {
   const [recipes, setRecipes] = useLocalStorage<any>("recipes", []);
 
   const [SearchedRecipes, setSearchedRecipes] =
-    useRecoilState<any>(SearchedRecipesState);
+    useRecoilState(SearchedRecipesState);
 
   SearchedRecipes.length === 0 && setSearchedRecipes(recipes);
 
@@ -29,7 +29,7 @@ const SearchField = () => {
   const placeHolder = useMemo(() => getRandomPlaceholder(), []);
   const setSubTitle = useSetRecoilState<string>(HomeSubTitle);
 
-  const handleSearchDirect = (e: any) => {
+  const handleSearchDirect = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     const current: any = inputRef?.current;
     const newValue: string = current.value;
@@ -38,7 +38,7 @@ const SearchField = () => {
     if (newValue.length === 0) {
       setRecipes(exampleData);
 
-      setSearchedRecipes(exampleData);
+      setSearchedRecipes(exampleData as any);
       return;
     }
     getRecipes(newValue);

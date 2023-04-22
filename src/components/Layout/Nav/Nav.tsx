@@ -1,4 +1,4 @@
-import { TbArrowNarrowLeft, TbHexagons, TbUser } from "react-icons/tb";
+import { TbHexagons } from "react-icons/tb";
 import styled from "styled-components";
 import { Link, useLocation } from "react-router-dom";
 import UserHandIcon from "src/assets/HandIcons/UserHandIcon";

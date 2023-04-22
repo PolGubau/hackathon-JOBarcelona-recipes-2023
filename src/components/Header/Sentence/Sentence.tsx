@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { HomeSubTitle, SearchedRecipesState } from "src/State/Atom";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { getRandomRecipes } from "src/thunks/getRandomrecipes";
 import useLocalStorage from "src/hooks/useLocalStorage";
 import { getRandomDice } from "./Dice";
@@ -12,7 +12,7 @@ const Sentence = () => {
   const [SearchedRecipes, setSearchedRecipes] =
     useRecoilState(SearchedRecipesState);
   SearchedRecipes.length === 0 && setSearchedRecipes(recipes);
-  const [subTitle, setSubTitle] = useRecoilState<string>(HomeSubTitle);
+  const setSubTitle = useSetRecoilState<string>(HomeSubTitle);
   const getRecipes = async () => {
     const response = getRandomRecipes();
     const data = await response;

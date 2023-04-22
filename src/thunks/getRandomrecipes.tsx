@@ -1,6 +1,6 @@
 import { apiKey } from "src/models/url";
 
-export const getRandomRecipes = async (limit: number = 9) => {
+export const getRandomRecipes = async () => {
   const response = await fetch(
     `https://api.spoonacular.com/recipes/random?number=9&tags=vegetarian&apiKey=${apiKey}`
   );

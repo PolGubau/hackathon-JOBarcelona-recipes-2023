@@ -1,5 +1,4 @@
 import { atom } from "recoil";
-import exampleData from "src/models/exampleData";
 import { subtitles } from "src/models/texts";
 import { getRandomElementFromArray } from "src/utils/getRandomElementFromArray";
 

@@ -4,7 +4,7 @@ import LazyFooter from "./Footer/Footer";
 
 interface LayoutProps {
   hasHeader?: boolean;
-  children: any;
+  children: React.ReactNode;
 }
 
 const Layout = ({ hasHeader = false, children }: LayoutProps) => {
