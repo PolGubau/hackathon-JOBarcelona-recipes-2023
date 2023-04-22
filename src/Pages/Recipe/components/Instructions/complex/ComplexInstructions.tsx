@@ -16,10 +16,8 @@ const SimpleInstructions = ({
               return (
                 <StepStyled key={index}>
                   <header>
-                    <div className="left">
-                      <h3>Step {step.number}</h3>
-                      <p>{step.step}</p>
-                    </div>
+                    <h3>Step {step.number}</h3>
+                    <p>{step.step}</p>
                   </header>
                   <div className="images">
                     {step.ingredients && step.ingredients.length > 0 && (

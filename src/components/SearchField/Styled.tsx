@@ -9,12 +9,14 @@ export const SearchFieldStyled = styled.form`
   place-items: center;
   -webkit-box-align: center;
   width: 100%;
-  background-color: ${({ theme }) => theme.colors.neutral};
   height: 50px;
   border-radius: 9999px;
   padding: 30px 5px 30px 30px;
   outline: 1px solid black;
+  background-color: ${({ theme }) => theme.colors.neutral};
+  position: relative;
   max-width: 600px;
+  overflow: hidden;
 
   input {
     display: flex;
@@ -24,20 +26,26 @@ export const SearchFieldStyled = styled.form`
     background-color: ${({ theme }) => theme.colors.neutral};
     border: none;
     outline-style: none;
+    @media (max-width: 600px) {
+      font-size: 1.2em;
+    }
   }
   button {
+    position: absolute;
+    top: 0px;
+    right: 0px;
     display: flex;
     align-items: center;
     justify-content: center;
-
     background-color: ${({ theme }) => theme.colors.neutral};
     border: none;
     outline-style: none;
     cursor: pointer;
-    padding: 0px;
-    margin: 0px;
     border-radius: 9999px;
-    padding: 10px;
+    height: 100%;
+    aspect-ratio: 1/1;
+    padding: 0;
+    margin: 0;
     :hover {
       filter: brightness(0.8);
     }

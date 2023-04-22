@@ -1,5 +1,7 @@
 import { atom } from "recoil";
 import exampleData from "src/models/exampleData";
+import { subtitles } from "src/models/texts";
+import { getRandomElementFromArray } from "src/utils/getRandomElementFromArray";
 
 export const SearchState = atom({
   key: "SearchInputAtom",
@@ -11,5 +13,9 @@ export const SearchState = atom({
 
 export const SearchedRecipesState = atom({
   key: "SearchedRecipesAtom",
-  default: exampleData,
+  default: [],
+});
+export const HomeSubTitle = atom({
+  key: "HomeSubTitleKey",
+  default: getRandomElementFromArray(subtitles),
 });

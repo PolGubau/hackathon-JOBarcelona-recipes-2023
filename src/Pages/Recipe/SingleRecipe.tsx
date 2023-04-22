@@ -204,7 +204,11 @@ function SingleRecipe() {
           </div>
         </div>
         <IngredientList ingredients={openedRecipe.extendedIngredients} />
-        <Instructions simple={instructions} complex={analyzedInstructions} />
+        {analyzedInstructions && analyzedInstructions.length > 0 ? (
+          <Instructions simple={instructions} complex={analyzedInstructions} />
+        ) : (
+          <p>This recipe hasn't instructions... be brave and try it hehe</p>
+        )}
       </SingleStyled>
     </Layout>
   );

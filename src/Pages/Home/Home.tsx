@@ -3,13 +3,14 @@ import { HomeStyled } from "./HomeStyled";
 import GridRecipes from "../../components/Grid/GridRecipes";
 import Header from "src/components/Header/Header";
 import { SearchedRecipesState } from "src/State/Atom";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { useEffect } from "react";
 import useLocalStorage from "src/hooks/useLocalStorage";
 import { getRandomRecipes } from "src/thunks/getRandomrecipes";
 import HearthHandIcon from "src/assets/HandIcons/HearthHandIcon";
 import { Recipe } from "src/types";
 import exampleData from "src/models/exampleData";
+import { HomeSubTitle } from "src/State/Atom";
 
 function Home() {
   const [recipes, setRecipes] = useLocalStorage<Recipe[]>(
@@ -31,6 +32,7 @@ function Home() {
       data && setSearchedRecipes(data);
     }
   };
+  const subTitle = useRecoilValue<string>(HomeSubTitle);
 
   useEffect(() => {
     getRecipes();
@@ -44,10 +46,7 @@ function Home() {
           {recipes.length === 0 ? (
             <p>No recipes found </p>
           ) : (
-            <GridRecipes
-              elements={SearchedRecipes}
-              title="Our preferences :)"
-            />
+            <GridRecipes elements={SearchedRecipes} title={subTitle} />
           )}
 
           <HearthHandIcon style={{ transform: "scale(0.5)" }} />

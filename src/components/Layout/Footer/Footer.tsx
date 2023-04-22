@@ -73,7 +73,8 @@ const Footer = () => {
           JOBarcelona '23 | Frontend
         </a>
         {` `}
-        hackathon. Using React without IAs neither UI Frameworks. 2023 - 04 - 23
+        hackathon. Using React from without Frameworks neither UI Libraries.
+        2023 - 04 - 23
       </p>
 
       <Link to={"https://www.polgubauamores.me"} target="_blank">

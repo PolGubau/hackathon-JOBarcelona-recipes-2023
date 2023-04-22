@@ -1,18 +1,21 @@
 import { getRandomPlaceholder } from "src/utils/inputPlaceholder";
 import { SearchFieldStyled } from "./Styled";
 import { TbSearch } from "react-icons/tb";
-import { SearchedRecipesState } from "src/State/Atom";
-import { useRecoilState } from "recoil";
+import { HomeSubTitle, SearchedRecipesState } from "src/State/Atom";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { useMemo, useRef } from "react";
 import { searchRecipes } from "src/thunks/searchRecipes";
 import useLocalStorage from "src/hooks/useLocalStorage";
+import { getRandomElementFromArray } from "src/utils/getRandomElementFromArray";
+import { searchMessages, subtitles } from "src/models/texts";
+import exampleData from "src/models/exampleData";
 
 const SearchField = () => {
   const inputRef = useRef(null);
-  const [recipes, setRecipes] = useLocalStorage("recipes", []);
+  const [recipes, setRecipes] = useLocalStorage<any>("recipes", []);
 
   const [SearchedRecipes, setSearchedRecipes] =
-    useRecoilState(SearchedRecipesState);
+    useRecoilState<any>(SearchedRecipesState);
 
   SearchedRecipes.length === 0 && setSearchedRecipes(recipes);
 
@@ -24,11 +27,20 @@ const SearchField = () => {
   };
 
   const placeHolder = useMemo(() => getRandomPlaceholder(), []);
+  const setSubTitle = useSetRecoilState<string>(HomeSubTitle);
 
   const handleSearchDirect = (e: any) => {
     e.preventDefault();
     const current: any = inputRef?.current;
     const newValue: string = current.value;
+    setSubTitle(getRandomElementFromArray(subtitles));
+
+    if (newValue.length === 0) {
+      setRecipes(exampleData);
+
+      setSearchedRecipes(exampleData);
+      return;
+    }
     getRecipes(newValue);
   };
 

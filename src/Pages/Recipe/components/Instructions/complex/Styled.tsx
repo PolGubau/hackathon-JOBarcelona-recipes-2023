@@ -30,18 +30,17 @@ export const StepStyled = styled.article`
     justify-content: space-between;
     gap: 20px;
     width: 100%;
-    .left {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      h3 {
-        min-width: 160px;
-        font-size: 3em;
-        margin: 0;
-      }
+    @media screen and (max-width: 600px) {
+      flex-direction: column;
+      align-items: flex-start;
     }
+
+    h3 {
+      min-width: 160px;
+      font-size: 3em;
+      margin: 0;
+    }
+
     .icon {
       font-size: 30px;
     }
