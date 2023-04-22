@@ -15,7 +15,9 @@ export const LayoutStyled = styled.div`
     display: flex;
     flex-direction: column;
     flex: 1;
+    min-height: 100vh;
     width: 100%;
+    justify-content: space-between;
   }
   > main {
     flex: 1;

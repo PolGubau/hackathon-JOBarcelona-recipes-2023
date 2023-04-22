@@ -11,7 +11,9 @@ const Layout = ({ hasHeader = false, children }: LayoutProps) => {
   return (
     <LayoutStyled>
       <main className="content">
-        {hasHeader && <Nav />} <main>{children}</main>
+        <section>
+          {hasHeader && <Nav />} <main>{children}</main>
+        </section>
         <LazyFooter />
       </main>
     </LayoutStyled>

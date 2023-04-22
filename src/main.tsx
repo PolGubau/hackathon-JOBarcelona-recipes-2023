@@ -8,6 +8,7 @@ import Home from "./Pages/Home/Home";
 import React from "react";
 import { RecoilRoot } from "recoil";
 import SingleRecipe from "./Pages/Recipe/SingleRecipe";
+import About from "./Pages/About/About";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/about",
-    element: <Home />,
+    element: <About />,
   },
   {
     path: "*",

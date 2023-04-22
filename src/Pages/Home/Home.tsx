@@ -5,7 +5,7 @@ import Header from "src/components/Header/Header";
 import { SearchedRecipesState } from "src/State/Atom";
 import { useRecoilState } from "recoil";
 import { useEffect } from "react";
-import { useLocalStorage } from "pol-ui";
+import useLocalStorage from "src/hooks/useLocalStorage";
 import { getRandomRecipes } from "src/thunks/getRandomrecipes";
 import HearthHandIcon from "src/assets/HandIcons/HearthHandIcon";
 import { Recipe } from "src/types";
@@ -18,7 +18,7 @@ function Home() {
   );
 
   const [SearchedRecipes, setSearchedRecipes] =
-    useRecoilState<Recipe[]>(SearchedRecipesState);
+    useRecoilState<any>(SearchedRecipesState);
 
   SearchedRecipes.length === 0 && setSearchedRecipes(recipes);
 

@@ -3,9 +3,9 @@ import { SearchFieldStyled } from "./Styled";
 import { TbSearch } from "react-icons/tb";
 import { SearchedRecipesState } from "src/State/Atom";
 import { useRecoilState } from "recoil";
-import { useLocalStorage } from "pol-ui";
 import { useMemo, useRef } from "react";
 import { searchRecipes } from "src/thunks/searchRecipes";
+import useLocalStorage from "src/hooks/useLocalStorage";
 
 const SearchField = () => {
   const inputRef = useRef(null);

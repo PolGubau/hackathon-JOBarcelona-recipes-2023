@@ -1,6 +1,6 @@
 import { TbArrowNarrowLeft, TbHexagons, TbUser } from "react-icons/tb";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import UserHandIcon from "src/assets/HandIcons/UserHandIcon";
 export const NavStyled = styled.nav`
   display: flex;
@@ -41,6 +41,7 @@ export const NavStyled = styled.nav`
 `;
 
 const Nav = () => {
+  const location = useLocation();
   return (
     <NavStyled>
       <Link to={"/"}>
@@ -49,11 +50,12 @@ const Nav = () => {
           <h3>Beecipes</h3>
         </div>
       </Link>
-
-      <Link to={"/about"}>
-        <UserHandIcon style={{ transform: "scale(0.5)" }} />
-        About
-      </Link>
+      {location.pathname !== "/about" && (
+        <Link to={"/about"}>
+          <UserHandIcon style={{ transform: "scale(0.5)" }} />
+          About
+        </Link>
+      )}
     </NavStyled>
   );
 };

@@ -1,9 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import { SingleStyled } from "./SingleStyled";
-import { useLocalStorage, useRouter } from "pol-ui";
 import { ExtendedIngredients, Recipe } from "src/types";
-import axios from "axios";
 import { SearchedRecipesState } from "src/State/Atom";
 import { useRecoilState } from "recoil";
 import { Navigate } from "react-router-dom";
@@ -21,14 +19,13 @@ import Instructions from "./components/Instructions/Instructions";
 import Image from "./components/Image/Image";
 import { autoCapitalize } from "src/utils/autoCapitalize";
 import StarHandIcon from "src/assets/HandIcons/StarHandIcon";
-import isEqual from "lodash/isEqual";
 import { getInfoFromID } from "src/thunks/getInfoFromID";
-
+import { useParams } from "react-router-dom";
+import useLocalStorage from "src/hooks/useLocalStorage";
 //
 
 function SingleRecipe() {
-  const router = useRouter();
-  const { id } = router.params;
+  const { id } = useParams();
   const [recipes, setRecipes] = useLocalStorage("recipes", []);
 
   const [SearchedRecipes, setSearchedRecipes] =

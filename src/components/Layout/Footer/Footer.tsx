@@ -5,6 +5,7 @@ export const FooterStyled = styled.nav`
   display: flex;
   flex-direction: row;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 20px;
   padding: 10px 20px;

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { SearchedRecipesState } from "src/State/Atom";
 import { useRecoilState } from "recoil";
 import { getRandomRecipes } from "src/thunks/getRandomrecipes";
-import { useLocalStorage } from "pol-ui";
+import useLocalStorage from "src/hooks/useLocalStorage";
 import { getRandomDice } from "./Dice";
 
 const Sentence = () => {
